@@ -24,12 +24,11 @@
 
 -- 4.	How many postings in Tennessee have a star rating above 4?
 
--- Select location, Count(star_rating) As postings_over_4_stars
+-- Select location
 -- From data_analyst_jobs
--- Where star_rating >= 4 AND location = 'TN'
--- Group By location;
+-- Where star_rating > 4 AND location = 'TN';
 
--- 4 postings over 4 star ratings
+-- 3 postings over 4 star ratings
 
 -- 5.	How many postings in the dataset have a review count between 500 and 1000?
 
@@ -67,7 +66,7 @@
 
 -- 9.	Find the name of each company and its average star rating for all companies that have more than 5000 reviews across all locations. How many companies are there with more that 5000 reviews across all locations?
 
--- Select company, Round(Avg(star_rating),2)
+-- Select company, Round(Avg(star_rating),2) As avg_star_rating
 -- From data_analyst_jobs
 -- Where review_count > 5000
 -- 	And company IS NOT NULL
@@ -88,7 +87,7 @@
 
 -- 11.	Find all the job titles that contain the word ‘Analyst’. How many different job titles are there? 
 
--- Select Count(title) As titles_with_analyst
+-- Select Count(Distinct title) As titles_with_analyst
 -- From data_analyst_jobs
 -- Where Lower(title) Like '%analyst%';
 
@@ -109,13 +108,13 @@
 --  - Order your results so that the domain with the greatest number of `hard to fill` jobs is at the top. 
 --   - Which three industries are in the top 4 on this list? How many jobs have been listed for more than 3 weeks for each of the top 4?
 
-Select domain, count(title) As postings
-From data_analyst_jobs
-Where days_since_posting > 21
-	And domain IS NOT Null
-	And lower(skill) Like '%sql%' 
-Group by domain
-Order by postings DESC;
+-- Select domain, count(title) As postings
+-- From data_analyst_jobs
+-- Where days_since_posting > 21
+-- 	And domain IS NOT Null
+-- 	And lower(skill) Like '%sql%' 
+-- Group by domain
+-- Order by postings DESC;
 
 -- Internet and Software, Banks and Financial Services, and Consulting and Business Service.
 
